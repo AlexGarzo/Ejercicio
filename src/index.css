@@ -1,0 +1,25 @@
+body {
+    background: #101010;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+
+
+}
+
+label {
+    display: block;
+}
+
+input, select {
+    width: 100%;
+}
+
+span {
+    align-items: center;
+    display: flex;
+    color:red;
+    font-size: 20px; 
+}
