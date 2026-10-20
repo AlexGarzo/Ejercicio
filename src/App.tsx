@@ -15,7 +15,16 @@ export default function App() {
   <label htmlFor="nombre">Nombre </label>
   <input type="text" 
   {...register("nombre", {required: true,
-  minLength: 3 })} />
+  minLength: 3
+  })} />
+
+  {errors.nombre?.type === "required" && ( <span className="error-nombre">Nombre requerido</span>
+  )}
+
+  {errors.nombre?.type === "minLength" && ( <span className="error-nombre">El Nombre debe contener al menos 3 caracteres</span>
+  )}
+
+
 
   <label htmlFor="apellido">Apellido </label>
   <input type="text"
@@ -29,6 +38,9 @@ export default function App() {
   <input type="text" 
   {...register("cargo", {required: true})} />
   
+  {
+    errors.cargo && (<span className="error-cargo">Cargo requerido</span>
+  )}
 
   <br />
   <button type="submit">Enviar</button>
