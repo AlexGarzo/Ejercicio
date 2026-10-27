@@ -1,15 +1,30 @@
+import { useState } from 'react';
 import {useForm} from 'react-hook-form'
+import TarjetaPerfil from './TarjetaPerfil';
 
 export default function App() {
+
+  const [datosEnviados, setDatosEnviados] = useState({
+  nombre: "",
+  apellido: "",
+  documento: "",
+  cargo: ""
+})
 
   const {register, handleSubmit, formState:{errors}
   } = useForm();
 
   console.log(errors)
   
-  const onSubmit = handleSubmit ((data)=> {
-    console.log(data)
-  }) 
+  const onSubmit = handleSubmit((data) => {
+  setDatosEnviados({
+    nombre: data.nombre,
+    apellido: data.apellido,
+    documento: data.documento,
+    cargo: data.cargo
+  })
+})
+
   return (
   <form onSubmit={onSubmit}>
   <label htmlFor="nombre">Nombre </label>
@@ -46,9 +61,13 @@ export default function App() {
   <button type="submit">Enviar</button>
   <br />
   <br />
-{
-  errors.nombre && <span>ESPERANDO DATOS</span>
-}
+
+<TarjetaPerfil 
+  nombre={datosEnviados.nombre}
+  apellido={datosEnviados.apellido}
+  documento={datosEnviados.documento}
+  cargo={datosEnviados.cargo}
+/>
 
   </form>
   )
